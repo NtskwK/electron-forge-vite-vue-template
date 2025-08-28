@@ -36,27 +36,20 @@ const information = document.getElementById("info");
 
 // 等待 DOM 完全加载并检查 window.versions 是否可用
 const initializeApp = () => {
-  if (window.versions) {
-    information.innerText = `本应用正在使用 Chrome (v${window.versions.chrome()}), Node.js (v${window.versions.node()}), 和 Electron (v${window.versions.electron()})`;
-    window.listDDrive.ldd().then((text) => {
-      information.innerText += `\nD盘根目录下的文件有：\n${text.join("\n")}`;
-    });
+  information.innerText = `本应用正在使用 Chrome (v${window.versions.chrome()}),
+     Node.js (v${window.versions.node()}), 和 
+     Electron (v${window.versions.electron()})`;
 
-    const func = async () => {
-      try {
-        const response = await window.versions.ping();
-        console.log(response); // 打印 'pong'
-      } catch (error) {
-        console.error("Error calling ping:", error);
-      }
-    };
+  const func = async () => {
+    try {
+      const response = await window.versions.ping();
+      console.log(response); // 打印 'pong'
+    } catch (error) {
+      console.error("Error calling ping:", error);
+    }
+  };
 
-    func();
-  } else {
-    information.innerText = "正在加载应用信息...";
-    // 如果 window.versions 不可用，等待一段时间后重试
-    setTimeout(initializeApp, 100);
-  }
+  func();
 };
 
 // 确保 DOM 已加载

@@ -42,34 +42,6 @@ const createWindow = () => {
 app.on("ready", () => {
   ipcMain.handle("ping", () => "pong");
 
-  ipcMain.handle("list-d-drive", async () => {
-    return await getDdriveFiles();
-  });
-
-  async function getDdriveFiles() {
-    // 指定D盘根目录路径
-    const dDrivePath = "D:/";
-    try {
-      const files = await fs.readdir(dDrivePath);
-
-      console.log("D盘根目录下的文件和文件夹：");
-      files.forEach((file, index) => {
-        console.log(`${index + 1}. ${file}`);
-      });
-
-      return files;
-    } catch (err) {
-      console.error("读取目录时发生错误：", err);
-      // 常见错误处理
-      if (err.code === "ENOENT") {
-        console.error("错误：D盘不存在或无法访问");
-      } else if (err.code === "EACCES") {
-        console.error("错误：没有访问D盘的权限");
-      }
-      throw err;
-    }
-  }
-
   createWindow();
 });
 

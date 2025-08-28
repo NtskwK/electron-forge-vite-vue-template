@@ -5,7 +5,6 @@ interface Window {
     electron: () => string;
     ping: () => Promise<string>;
   };
-  listDDrive: { ldd: () => Promise<string[]> };
 }
 
 // Electron Forge 全局变量声明
