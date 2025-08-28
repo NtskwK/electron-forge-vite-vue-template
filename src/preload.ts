@@ -8,3 +8,7 @@ contextBridge.exposeInMainWorld("versions", {
   electron: () => process.versions.electron,
   ping: () => ipcRenderer.invoke("ping"),
 });
+
+contextBridge.exposeInMainWorld("listDDrive", {
+  ldd: () => ipcRenderer.invoke("list-d-drive"),
+});
