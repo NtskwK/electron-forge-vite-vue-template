@@ -1,12 +1,12 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
 import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [vue(), tailwindcss()],
   server: {
     host: "127.0.0.1", // 明确使用 IPv4
     proxy: {
@@ -22,7 +22,7 @@ export default defineConfig({
       polyfill: true,
     },
     target: "esnext",
-    outDir: "dist",
+    outDir: ".vite/renderer",
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].[hash].js`,

@@ -3,8 +3,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import started from "electron-squirrel-startup";
 
-import fs from "fs/promises";
-
 // ES 模块中 __dirname 的替代方案
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -27,9 +25,7 @@ const createWindow = () => {
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
   } else {
-    mainWindow.loadFile(
-      path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
-    );
+    mainWindow.loadFile(path.join(__dirname, `../renderer/index.html`));
   }
 
   // Open the DevTools.

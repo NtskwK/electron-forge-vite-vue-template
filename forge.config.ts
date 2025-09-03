@@ -13,7 +13,7 @@ const config: ForgeConfig = {
   },
   rebuildConfig: {},
   makers: [
-    // new MakerSquirrel({}),
+    new MakerSquirrel({}),
     new MakerZIP({}, ["darwin", "win32"]),
     new MakerRpm({}),
     new MakerDeb({}),
@@ -25,7 +25,7 @@ const config: ForgeConfig = {
       build: [
         {
           // `entry` is just an alias for `build.lib.entry` in the corresponding file of `config`.
-          entry: "src/main.ts",
+          entry: "src/main/main.ts",
           config: "vite.main.config.ts",
           target: "main",
         },
