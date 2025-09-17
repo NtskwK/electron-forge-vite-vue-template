@@ -10,10 +10,10 @@ export default defineConfig({
   server: {
     host: "127.0.0.1", // 明确使用 IPv4
     proxy: {
-      "/api/ocr": {
-        target: "http://127.0.0.1:8001", // 使用 IPv4 地址而不是 localhost
+      "/api": {
+        target: "http://127.0.0.1:8000", // 使用 IPv4 地址而不是 localhost
         changeOrigin: true, // 是否允许跨域
-        rewrite: (path) => path.replace(/^\/api\/ocr/, ""), // 路径重写
+        rewrite: (path) => path.replace(/^\/api/, ""), // 路径重写
       },
     },
   },
